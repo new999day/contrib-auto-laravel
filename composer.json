@@ -1,5 +1,5 @@
 {
-  "name": "open-telemetry/opentelemetry-auto-laravel",
+  "name": "new999day/opentelemetry-auto-laravel",
   "description": "OpenTelemetry auto-instrumentation for Laravel",
   "keywords": ["opentelemetry", "otel", "open-telemetry", "tracing", "laravel", "instrumentation"],
   "type": "library",
@@ -14,7 +14,11 @@
     "ext-opentelemetry": "*",
     "laravel/framework": "^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
     "open-telemetry/api": "^1.0",
-    "open-telemetry/sem-conv": "^1.24"
+    "open-telemetry/sem-conv": "^1.24",
+    "open-telemetry/exporter-otlp": "^1.0",
+    "open-telemetry/opentelemetry-auto-laravel": "^0.0.23",
+    "open-telemetry/opentelemetry-auto-psr15": "^1.0",
+    "open-telemetry/opentelemetry-auto-psr18": "^1.0"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.50",
