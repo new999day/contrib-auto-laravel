@@ -39,7 +39,13 @@ class Kernel implements LaravelHook
             KernelContract::class,
             'handle',
             pre: function (KernelContract $kernel, array $params, string $class, string $function, ?string $filename, ?int $lineno) {
+                /** @var $request $request */
                 $request = ($params[0] instanceof Request) ? $params[0] : null;
+
+                if ($request->is('*/health-check/liveness', '*/health-check/readiness',)) {
+                    return false;
+                }
+
                 /** @psalm-suppress ArgumentTypeCoercion */
                 $builder = $this->instrumentation
                     ->tracer()
