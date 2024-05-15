@@ -46,10 +46,13 @@ class Kernel implements LaravelHook
                     return false;
                 }
 
+                $parsedUrl = collect(parse_url($request->url()));
+                $method = $request?->method();
+
                 /** @psalm-suppress ArgumentTypeCoercion */
                 $builder = $this->instrumentation
                     ->tracer()
-                    ->spanBuilder(sprintf('%s', $request?->method() ?? 'unknown'))
+                    ->spanBuilder($method ? $method . ' ' . $parsedUrl['path'] : '')
                     ->setSpanKind(SpanKind::KIND_SERVER)
                     ->setAttribute(TraceAttributes::CODE_FUNCTION, $function)
                     ->setAttribute(TraceAttributes::CODE_NAMESPACE, $class)
@@ -87,6 +90,7 @@ class Kernel implements LaravelHook
                     return;
                 }
                 $span = Span::fromContext($scope->context());
+                $span->setAttribute('trace_id', $span->getContext()->getTraceId());
 
                 $request = ($params[0] instanceof Request) ? $params[0] : null;
                 $route = $request?->route();
