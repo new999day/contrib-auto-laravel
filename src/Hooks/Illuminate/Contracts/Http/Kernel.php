@@ -42,7 +42,12 @@ class Kernel implements LaravelHook
                 /** @var $request $request */
                 $request = ($params[0] instanceof Request) ? $params[0] : null;
 
-                if ($request->is('*/health-check/liveness', '*/health-check/readiness',)) {
+                if ($request->is(
+                    '*/health-check/liveness',
+                    '*/health-check/readiness',
+                    '*/health/alive',
+                    '*/health/ready'
+                )) {
                     return false;
                 }
 
