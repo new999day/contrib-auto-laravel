@@ -13,7 +13,7 @@
     "ext-json": "*",
     "ext-opentelemetry": "*",
     "laravel/framework": "^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
-    "new999day/opentelemetry-auto-ext-amqp": "dev-main",
+    "new999day/opentelemetry-auto-ext-amqp": "^1.0",
     "open-telemetry/api": "^1.0",
     "open-telemetry/exporter-otlp": "^1.0",
     "open-telemetry/extension-propagator-b3": "^1.0",
